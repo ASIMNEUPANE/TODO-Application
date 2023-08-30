@@ -36,8 +36,8 @@ catch(e){next(e)}
 
 router.put('/:id',async(req,res,next)=>{
 try{
-const {id}= req.params
-const result = await controller.updateById(id)
+const {id}= req.params;
+const result = await controller.updateById(id, req.body)
 res.json({data:result, msg:"scusses"})
 }
 catch(e){next(e)}

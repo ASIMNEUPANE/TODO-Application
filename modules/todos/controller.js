@@ -13,7 +13,7 @@ const getById = async (id) => {
 };
  
 const updateById = async (id,payload) => {
-return await TodoModel.updateOne({id},payload);
+return await TodoModel.updateOne({_id:id},payload);
 };
 
 const deleteById = async (id) => {
