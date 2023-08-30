@@ -1,30 +1,25 @@
-const TodoModel = require('./model');
+const TodoModel = require("./model");
 
-const create = async (payload)=>{
-    return await TodoModel.create(payload)
+const create = async (payload) => {
+  return await TodoModel.create(payload);
+};
 
-}
+const list = async () => {
+  return await TodoModel.find();
+};
 
-const list = async()=>{
+const getById = async (id) => {
+  return await TodoModel.findOne({id});
+};
+ 
+const updateById = async (id,payload) => {
+return await TodoModel.updateOne({id},payload);
+};
 
-    return await TodoModel.find();
-}
+const deleteById = async (id) => {
+return await TodoModel.deleteOne(id)
 
-
-const getById = async(id)=>{
-return await TodoModel.findOne(id)
-
-
-}
-
-const updateById= async ()=>{
-
-
-
-}
-
-const deleteById = async()=>{
+};
 
 
-
-}
+module.exports = {create, list,getById,updateById,deleteById}
