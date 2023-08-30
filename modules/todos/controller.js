@@ -9,15 +9,15 @@ const list = async () => {
 };
 
 const getById = async (id) => {
-  return await TodoModel.findOne({id});
+  return await TodoModel.findOne({_id:id});
 };
  
 const updateById = async (id,payload) => {
-return await TodoModel.updateOne({_id:id},payload);
+return await TodoModel.findByIdAndUpdate({_id:id},payload);
 };
 
 const deleteById = async (id) => {
-return await TodoModel.deleteOne(id)
+return await TodoModel.deleteOne({_id:id})
 
 };
 

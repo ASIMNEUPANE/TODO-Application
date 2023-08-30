@@ -9,11 +9,11 @@ const list = async () => {
 };
 
 const getById = async (id) => {
-  return await subTaskModel.findOne({id});
+  return await subTaskModel.findOne({_id:id});
 };
  
 const updateById = async (id,payload) => {
-return await subTaskModel.updateOne({id},payload);
+return await subTaskModel.findByIdAndUpdate({_id: id},payload);
 };
 
 const deleteById = async (id) => {

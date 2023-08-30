@@ -37,7 +37,7 @@ router.get("/:id", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await controller.updateById(id);
+    const result = await controller.updateById(id, req.body);
     res.json({ data: result, msg: "scusses" });
   } catch (e) {
     next(e);
