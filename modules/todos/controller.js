@@ -13,6 +13,7 @@ const getById = async (id) => {
 };
  
 const updateById = async (id,payload) => {
+  const {status}= payload;
 return await TodoModel.findByIdAndUpdate({_id:id},payload);
 };
 

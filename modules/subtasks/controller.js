@@ -1,6 +1,8 @@
 const subTaskModel = require("./model");
 
 const create = async (payload) => {
+  const {todo, title}= payload;
+  if(!todo|| !title) throw new Error("Title or Todo missing")
   return await subTaskModel.create(payload);
 };
 
