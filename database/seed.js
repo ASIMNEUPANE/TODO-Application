@@ -1,0 +1,26 @@
+require("dotenv").config();
+const mongoose = require("mongoose");
+const todoController = require("../modules/todos/controller");
+const subtaskController = require("../modules/subtasks/controller");
+
+mongoose.connect(process.env.DB_URL, { useNewUrlParser: true });
+var setup = {
+  initialize: async () => {
+    await mongoose.connect.dropDatabase();
+    console.log("DB reset");
+    const todo1 = await todoController.create({ title: "Buy Clothes" });
+    const todo2 = await todoController.create({ title: "Buy Shoes" });
+    console.log("----TODOS SETUP COMPLETED----");
+
+    const sub1 = await subtaskController.create({
+      title: "Goto Supermarket",
+      todo: todo1._id,
+    });
+    const sub2 = await subtaskController.create({
+      title: "Check your shoe size",
+      todo: todo2._id,
+    });
+
+    console.log("-----DONE-----")
+  },
+};

@@ -15,11 +15,12 @@ const getById = async (id) => {
 };
  
 const updateById = async (id,payload) => {
-return await subTaskModel.findByIdAndUpdate({_id: id},payload);
+  const {status}= payload;
+return await subTaskModel.findByIdAndUpdate({_id: id},{status}, {new:true});
 };
 
 const deleteById = async (id) => {
-return await subTaskModel.deleteOne(id)
+return await subTaskModel.deleteOne({_id:id})
 
 };
 

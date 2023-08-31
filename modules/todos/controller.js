@@ -1,11 +1,21 @@
 const TodoModel = require("./model");
 
 const create = async (payload) => {
-  return await TodoModel.create(payload);
+  const {title}= payload;
+  return await TodoModel.create({title});
 };
 
 const list = async () => {
-  return await TodoModel.find();
+  return await TodoModel.aggregate([
+    {
+      '$lookup': {
+        'from': 'subtasks', 
+        'localField': '_id', 
+        'foreignField': 'todo', 
+        'as': 'subtasks'
+      }
+    }
+  ])
 };
 
 const getById = async (id) => {
@@ -14,7 +24,7 @@ const getById = async (id) => {
  
 const updateById = async (id,payload) => {
   const {status}= payload;
-return await TodoModel.findByIdAndUpdate({_id:id},payload);
+return await TodoModel.findByIdAndUpdate({_id:id},{status},{new:true});
 };
 
 const deleteById = async (id) => {
