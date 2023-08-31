@@ -2,5 +2,3 @@
 
 
 
-express-validator
-joi malidate recomand 

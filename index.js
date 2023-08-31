@@ -9,6 +9,7 @@ mongoose.connect(process.env.DB_URL).then(() => {
 });
 
 const port = +process.env.PORT || 3000;
+
 app.use(express.json());
 
 app.use("/", indexROuter);

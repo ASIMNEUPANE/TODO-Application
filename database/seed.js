@@ -6,7 +6,7 @@ const subtaskController = require("../modules/subtasks/controller");
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true });
 var setup = {
   initialize: async () => {
-    await mongoose.connect.dropDatabase();
+    await mongoose.connection.dropDatabase();
     console.log("DB reset");
     const todo1 = await todoController.create({ title: "Buy Clothes" });
     const todo2 = await todoController.create({ title: "Buy Shoes" });
@@ -24,3 +24,5 @@ var setup = {
     console.log("-----DONE-----")
   },
 };
+
+setup.initialize();
