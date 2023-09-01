@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const { ObjectId } = Schema;
-const commonSchema = require("../../utilis/commomSchema");
+const commonSchema = require("../../server/utilis/commomSchema");
 
 const SubTaskSchema = new Schema({
   title: { type: String, required: true },
