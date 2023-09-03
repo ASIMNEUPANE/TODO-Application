@@ -1,9 +1,9 @@
 import React from "react";
 
 export default function Car(props) {
-  const input = document.getElementById("text").value;
-  const shoot = (name) => {
-    alert(`goallsss..Bya ${name}`);
+  const shoot = () => {
+    const input = document.getElementById("text")?.value || "sasasasas";
+    alert(`goallsss..By ${input}`);
   };
 
   return (
@@ -11,7 +11,10 @@ export default function Car(props) {
       Color of car is {props.color} and it has {props.wheels}
       <br />
       <input type="text" id="text" />
-      <button onClick={() => shoot(input)}>shoot</button>
+      <button onClick={() => shoot()}>shoot</button>
+     
     </div>
+    
+    
   );
 }
