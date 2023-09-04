@@ -1,16 +1,25 @@
 import Car from "./Car";
 import Goal from "./Goal";
+import {} from "react-bootstrap";
 
 function App() {
   return (
-    <div>
-      <Car color="red" wheels="4" />
-      <hr/>
-      < Goal isGoal ={true}/>
+   <>
+   <container>
+<col>
+<row>
+<Button variant="outline-primary">Primary</Button>
+</row>
+<row>
 
-      
-    
-    </div>
+</row>
+
+
+</col>
+
+   </container>
+   
+   </>
   );
 }
 
