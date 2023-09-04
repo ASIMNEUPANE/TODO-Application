@@ -1,21 +1,15 @@
 import React from "react";
 
-function List({ cars }) {
+function LogicalOperator(props) {
+  const {cars}= props;
   return (
     <div>
-      <b>List</b>
-      
-        <ol>
-          {cars && cars.length > 0 &&
-            cars.map((car, index) => {
-              return (
-                <li>
-                  key = {index}{car}
-                </li>
-              );
-            })}
-        </ol>
+      <b>LogicalOperator</b>
+      <br/>
+      {cars && cars.length> 0 && <>I have cars</> }
+     
       
     </div>
   );
 }
+export default LogicalOperator;

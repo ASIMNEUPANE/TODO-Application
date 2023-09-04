@@ -23,4 +23,4 @@ function GoalResult(isGoal) {
 
 
 
-export default Goal
+export default GoalResult;
