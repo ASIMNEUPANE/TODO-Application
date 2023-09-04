@@ -1,13 +1,13 @@
 import React from 'react'
-import {Button, Form, InputGroup, Placeholder} from 'react-bootstrap'
+import { Button,Form, InputGroup} from 'react-bootstrap'
 
-function AddInputGroup(label,placeholder,Button) {
+function AddInputGroup({button,buttonVariant,label,placeholder}) {
   return (
     <>
        <InputGroup className="mb-3">
         <InputGroup.Text>{label || "Lable"}</InputGroup.Text>
-        <Form.Control Placeholder={placeholder || "placeholder"} />
-        <Button variant = "primary" id ="button-addon2" >{Button || "Loadingg."}</Button>
+        <Form.Control placeholder={placeholder || "placeholder"} />
+        <Button variant = {buttonVariant || "success"} id ="button-addon2" >{button || "Loadingg."}</Button>
         </InputGroup>
         </>
     );

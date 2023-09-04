@@ -1,4 +1,4 @@
-import Accordians from "./Accordian";
+
 import {Container, Row, Col} from 'react-bootstrap'
 import Todo from './Pages/Todo'
 
@@ -7,12 +7,13 @@ function App() {
   
   <Container>
       
-      
-      <Row>
+      <center>
+      <Row >
         <Col md={{ span: 6, offset: 3 }}>
           <Todo/>
         </Col>
       </Row>
+      </center>
     </Container>
   
   
