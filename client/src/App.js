@@ -1,5 +1,10 @@
+import Accordians from "./Accordian";
+
+
 function App() {
-  return
+  return(
+    <Accordians/>
+  )
 }
 
 export default App;
