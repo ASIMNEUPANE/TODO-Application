@@ -3,6 +3,7 @@ import { Button,Form, InputGroup} from 'react-bootstrap'
 
 function AddInputGroup({button,buttonVariant,label,placeholder}) {
   return (
+    
     <>
        <InputGroup className="mb-3">
         <InputGroup.Text>{label || "Lable"}</InputGroup.Text>

@@ -1,32 +1,25 @@
-import Accordion from 'react-bootstrap/Accordion';
+import Accordion from "react-bootstrap/Accordion";
 
-function Accordians() {
+function TaskAccordian({ tasks }) {
   return (
-    
     <Accordion defaultActiveKey="0">
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>TODO-Task-1</Accordion.Header>
-        <Accordion.Body>
-         <ol>
-         <li><input type="checkbox" />    Do HomeWork</li>
-         <li><input type="checkbox" />    Read a Book</li>
-         </ol>
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="1">
-        <Accordion.Header>TODO-Task-2</Accordion.Header>
-        <Accordion.Body>
-        <ol>
-        <li><input type="checkbox" />    Play a guiter</li>
-        <li><input type="checkbox" />    Practice Football</li>
-     
-         </ol>
-        </Accordion.Body>
-      </Accordion.Item>
+      {tasks &&
+        tasks.length > 0 &&
+        tasks.map((task,i) => {
+          return(
+          <Accordion.Item key={task._id} eventKey="i">
+            <Accordion.Header>{task?.title}</Accordion.Header>
+            <Accordion.Body>{task?.status}</Accordion.Body>
+          </Accordion.Item>
+          )
+      })}
     </Accordion>
-
-
-  )
+  );
 }
 
-export default Accordians
+export default TaskAccordian;
+
+// <ol>
+// <li><input type="checkbox" />    Do HomeWork</li>
+// <li><input type="checkbox" />    Read a Book</li>
+// </ol>
