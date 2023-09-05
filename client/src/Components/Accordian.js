@@ -10,7 +10,7 @@ function TaskAccordian({ tasks }) {
         tasks.map((task, i) => {
           return (
             <Accordion.Item key={task._id} eventKey={i}>
-              <Accordion.Header>{task?.title}</Accordion.Header>
+              <Accordion.Header>{ task?.title}</Accordion.Header>
               <Accordion.Body>
                 {task?.subtasks && task?.subtasks.length> 0 ? (
                   <SubTaskList />
