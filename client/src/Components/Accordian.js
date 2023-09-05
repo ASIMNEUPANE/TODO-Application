@@ -17,7 +17,7 @@ function TaskAccordian({ tasks }) {
                 ) : (
                   <MsgAlert msg="No subtasks found . Add new subtasks " />
                 )}
-                <AddInputGroup label="Add new SubTasks" placeholder="EG. Get clothes" button="Add the Subtask"/>
+                <AddInputGroup label="Add new SubTasks." placeholder="EG. Get clothes" button="Add the Subtask"/>
               </Accordion.Body >
             </Accordion.Item>
           );
