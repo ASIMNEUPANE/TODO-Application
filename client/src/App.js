@@ -1,7 +1,7 @@
 
 import {Container, Row, Col} from 'react-bootstrap'
 import Todo from './Pages/Todo'
-
+import Demo from './Demo';
 function App() {
   return<>
   
@@ -10,7 +10,8 @@ function App() {
       <center>
       <Row >
         <Col md={{ span: 6, offset: 3 }}>
-          <Todo/>
+          {/* <Todo/> */}
+          <Demo/>
         </Col>
       </Row>
       </center>

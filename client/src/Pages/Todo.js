@@ -20,7 +20,7 @@ return (
       <Title title={"TODO App"} />
       <AddInputGroup
         label="Add new todo?"
-        placeholder="EG. Do Laundry"
+        placeholder="EG. Do Laundry."
         button="Add the task"
         buttonVariant="danger"
       />

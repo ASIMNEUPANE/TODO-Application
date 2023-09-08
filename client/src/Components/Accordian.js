@@ -1,5 +1,4 @@
-import Accordion from "react-bootstrap/Accordion";
-import Alert from "./MsgAlert";
+import { Accordion, Form } from "react-bootstrap";
 import SubTaskList from "./SubTaskList";
 import MsgAlert from "./MsgAlert";
 import AddInputGroup from "./AddInputGroup";
@@ -10,20 +9,28 @@ function TaskAccordian({ tasks }) {
         tasks.map((task, i) => {
           return (
             <Accordion.Item key={task._id} eventKey={i}>
-              <Accordion.Header>{ task?.title}</Accordion.Header>
+              <Accordion.Header>
+                <Form.Group  >
+                  <Form.Check type="checkbox" label={task?.title} />
+                </Form.Group>
+              </Accordion.Header>``
               <Accordion.Body>
-                {task?.subtasks && task?.subtasks.length> 0 ? (
+                {task?.subtasks && task?.subtasks.length > 0 ? (
                   <SubTaskList />
                 ) : (
                   <MsgAlert msg="No subtasks found . Add new subtasks " />
                 )}
-                <AddInputGroup label="Add new SubTasks." placeholder="EG. Get clothes" button="Add the Subtask"/>
-              </Accordion.Body >
+                <AddInputGroup
+                  label="Add new SubTasks"
+                  placeholder="EG. Get clothes"
+                  button="Add the Subtask"
+                />
+              </Accordion.Body>
             </Accordion.Item>
           );
         })
       ) : (
-        <Alert
+        <MsgAlert
           msg="Task not found . Add new task to get started."
           variant="primary"
         />
