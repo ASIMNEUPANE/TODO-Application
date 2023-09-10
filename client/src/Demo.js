@@ -2,33 +2,77 @@ import { useEffect, useState } from "react";
 import useFetchApi from "./hooks/useFetchApi";
 
 function Demo() {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    setTimeout(() => {
-      setCount((count)=> count+1);
-    }, 1000);
-  },[count]);
+  const [data, setData] = useState([]);
 
-  return <>I have {count} count</>;
+  useEffect(() => {
+    let isFetch = false;
+    const fetchData = () => {
+      isFetch = true;
+      fetch(`https://jsonplaceholder.typicode.com/posts/`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((json) => setData(json))
+        .catch((e) => {
+          console.log(e);
+        })
+        .finally(() => {
+          isFetch = false;
+        });
+    };
+    fetchData();
+    return () => {
+      isFetch = false;
+    };
+  }, []);
+
+  return (
+    <>
+      <br />
+      <table>
+        <tr>
+          <th>userId</th>
+          <th>Id</th>
+          <th>title</th>
+          <th>body</th>
+        </tr>
+        {data &&
+          data.length > 0 &&
+          data.map((data, index) => {
+            return (
+              <tr key={index}>
+                <td>{data?.userId}</td>
+                <td>{data?.Id}</td>
+                <td>{data?.title}</td>
+                <td>{data?.body}</td>
+              </tr>
+            );
+          })}
+      </table>
+    </>
+  );
 }
 
 export default Demo;
 
+// used cleanup  function
 
+// function Demo() {
+//   const [count, setCount] = useState(0);
 
+//   useEffect(() => {
+//     const timer = setTimeout(() => {
+//       setCount((count) => count + 1);
+//     }, 1000);
+//     return () => {
+//       clearTimeout(timer);
+//     };
+//   });
 
+//   return <>I have {count} count</>;
+// }
 
-
-
-
-
-
-
-
-
-
-
-
+// export default Demo;
 
 // ----Updating Array using StateHooks--------
 
