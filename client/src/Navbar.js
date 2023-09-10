@@ -1,15 +1,13 @@
-
 import { useThemeContext } from "./Contexts/ThemeContext";
 
 export default function Navbar() {
-  
-  const { theme, setTheme } = useThemeContext();
+  const { theme,  toggleTheme } = useThemeContext();
   return (
     <div>
       MY Theme is {theme}
       <br />
-      <button onClick={() => setTheme("dark-theme")}>DarkTheme</button>
-      <button onClick={() => setTheme("light-theme")}>LightTheme</button>
+      <button onClick={toggleTheme}>Dark Theme</button>
+      <button onClick={toggleTheme}>Light Theme</button>
     </div>
   );
 }
