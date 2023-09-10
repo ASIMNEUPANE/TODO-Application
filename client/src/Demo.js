@@ -1,30 +1,15 @@
-import { useEffect, useState } from "react";
 import useFetchApi from "./hooks/useFetchApi";
 
 function Demo() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    let isFetch = false;
-    const fetchData = () => {
-      isFetch = true;
-      fetch(`https://jsonplaceholder.typicode.com/posts/`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((json) => setData(json))
-        .catch((e) => {
-          console.log(e);
-        })
-        .finally(() => {
-          isFetch = false;
-        });
-    };
-    fetchData();
-    return () => {
-      isFetch = false;
-    };
-  }, []);
+  const {
+    isLoading,
+    error,
+    data,
+  } = useFetchApi({
+    url: "https://jsonplaceholder.typicode.com/posts",
+  });
+  // if (isLoading) return <Loding />;
+  if (error) return <> {JSON.stringify(error)}</>;
 
   return (
     <>
