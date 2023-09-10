@@ -1,8 +1,9 @@
-
 import {Container, Row, Col} from 'react-bootstrap'
 import Todo from './Pages/Todo'
 import Demo from './Demo';
+import Navbar from './Navbar';
 function App() {
+  
   return<>
   
   <Container>
@@ -11,7 +12,9 @@ function App() {
       <Row >
         <Col md={{ span: 6, offset: 3 }}>
           {/* <Todo/> */}
-          <Demo/>
+          {/* <Demo/> */}
+       
+          <Navbar/>
         </Col>
       </Row>
       </center>
