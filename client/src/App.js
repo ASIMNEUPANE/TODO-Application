@@ -11,10 +11,10 @@ function App() {
       <center>
       <Row >
         <Col md={{ span: 6, offset: 3 }}>
-          {/* <Todo/> */}
+          <Todo/>
           {/* <Demo/> */}
        
-          <Navbar/>
+          {/* <Navbar/> */}
         </Col>
       </Row>
       </center>

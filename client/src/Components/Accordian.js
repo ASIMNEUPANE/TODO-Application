@@ -13,7 +13,7 @@ function TaskAccordian({ tasks }) {
                 <Form.Group  >
                   <Form.Check type="checkbox" label={task?.title} />
                 </Form.Group>
-              </Accordion.Header>``
+              </Accordion.Header>
               <Accordion.Body>
                 {task?.subtasks && task?.subtasks.length > 0 ? (
                   <SubTaskList />

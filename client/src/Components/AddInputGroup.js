@@ -1,18 +1,30 @@
-import React from 'react'
-import { Button,Form, InputGroup} from 'react-bootstrap'
+import React, { useState } from "react";
+import { Button, Form, InputGroup } from "react-bootstrap";
 
-function AddInputGroup({button,buttonVariant,label,placeholder}) {
+
+function AddInputGroup({ button, buttonVariant, label, placeholder }) {
+  const [title, setTitle] = useState({});
+ 
+  const handleSubmit = () => {};
+  
   return (
-    
     <>
-       <InputGroup className="mb-3">
+      <InputGroup className="mb-3">
         <InputGroup.Text>{label || "Lable"}</InputGroup.Text>
-        <Form.Control placeholder={placeholder || "placeholder"} />
-        <Button variant = {buttonVariant || "success"} id ="button-addon2" >{button || "Loadingg."}</Button>
-        </InputGroup>
-        </>
-    );
-
+        <Form.Control
+          placeholder={placeholder || "placeholder"}
+          onChange={(event) => {
+            setTitle((title) => {
+              return { ...title, title: event.target.value };
+            });
+          }}
+        />
+        <Button variant={buttonVariant || "success"} onClick={handleSubmit}>
+          {button || "Loadingg..."}
+        </Button>
+      </InputGroup>
+    </>
+  );
 }
 
 export default AddInputGroup;
