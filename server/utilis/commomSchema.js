@@ -3,4 +3,4 @@ const commonSchema = {
   updated_at: { type: Date, default: Date.now },
 };
 
-module.exports = commonSchema;
+module.exports = commonSchema

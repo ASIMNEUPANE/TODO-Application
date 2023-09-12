@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const commonSchema = require("../../server/utilis/commomSchema");
+const commonSchema = require("../../utilis/commomSchema");
 
 const TodoSchema = new Schema({
   title: { type: String, required: true },

@@ -1,12 +1,27 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
-
+import useApi from "../hooks/useApi";
+import Loading from "./Loading";
+import { URLS } from "../constants";
 
 function AddInputGroup({ button, buttonVariant, label, placeholder }) {
+  const {data,error , loading,create} = useApi()
   const [title, setTitle] = useState({});
  
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    await create({url:URLS.TODOS, payload:title })
+  };
+
+  if (error) return <>{JSON.stringify(error)}</>;
+
+  if (loading)
+    return (
+      <>
+        <Loading />
+      </>
+    );
   
+
   return (
     <>
       <InputGroup className="mb-3">
