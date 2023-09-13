@@ -1,15 +1,28 @@
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import useApi from "../hooks/useApi";
-import Loading from "./Loading";
-import { URLS } from "../constants";
 
-function AddInputGroup({ button, buttonVariant, label, placeholder }) {
+import Loading from "./Loading";
+
+import { useApiContext } from "../Contexts";
+
+function AddInputGroup({
+  button,
+  buttonVariant,
+  label,
+  placeholder,
+  taskId,
+  url,
+}) {
   const [title, setTitle] = useState({});
-  const {data,error , loading,create} = useApi()
- 
+  const { error, loading, create } = useApiContext();
+
   const handleSubmit = async () => {
-    await create({url:URLS.TODOS, payload:title })
+    const payload = title;
+
+    if (taskId) payload.todo = taskId;
+
+    await create({ url, payload: title });
+    setTitle({});
   };
 
   if (error) return <>{JSON.stringify(error)}</>;
@@ -20,7 +33,6 @@ function AddInputGroup({ button, buttonVariant, label, placeholder }) {
         <Loading />
       </>
     );
-  
 
   return (
     <>

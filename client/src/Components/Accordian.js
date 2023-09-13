@@ -1,5 +1,6 @@
 import { Accordion, Col, Form } from "react-bootstrap";
 import MsgAlert from "./MsgAlert";
+import { URLS } from "../constants";
 import SubtaskList from "./SubTaskList";
 import AddInputGroup from "./AddInputGroup";
 import TaskStatus from "./TasksStatus";
@@ -59,6 +60,8 @@ function Accordian({ tasks }) {
                   <MsgAlert msg="No Subtasks found. Add new subtask" />
                 )}
                 <AddInputGroup
+                url= {URLS.SUBTASKS}
+                taskId= {tasks?._id}
                   label="Add new Subtask"
                   placeholder="Eg. Gather Clothes"
                   button="Add new Subtask"

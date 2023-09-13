@@ -16,7 +16,7 @@ export default function useApi() {
       setLoading(false);
     } finally {
       setLoading(false);
-      list({url:URLS.TODOS});
+      list({ url: URLS.TODOS });
     }
   };
 
@@ -25,7 +25,6 @@ export default function useApi() {
       setLoading(true);
       const { data } = await axios(url);
       setData(data.data);
-    
     } catch (e) {
       setError(e);
       setLoading(false);
@@ -34,7 +33,18 @@ export default function useApi() {
     }
   };
   const updateStatus = () => {};
-  const deleteById = () => {};
+
+  
+  const deleteById = async (url, id) => {
+    try {
+      const url = await axios.delete(url + "/" + id);
+    } catch (e) {
+      setError(e);
+    } finally {
+      setLoading(false);
+      list({ url: URLS.TODOS });
+    }
+  };
 
   return { data, error, Loading, create, list, updateStatus, deleteById };
 }

@@ -1,15 +1,20 @@
 import { Col, Container, Form, Row } from "react-bootstrap";
-
+import { URLS } from "../constants";
+import { useApiContext } from "../Contexts";
 import { FaTrashAlt } from "react-icons/fa";
 
 function SubtaskList({ subtasks }) {
+  const {error,deleleById}= useApiContext()
   const handleStatus = () => {
     console.log("subtask status is being changed");
   };
-  const handleDelete = () => {
-    console.log("subtask is being deleted");
+
+  const handleDelete = async (subtaskId) => {
+    if (subtaskId) await deleleById({url:URLS.SUBTASKS, id:subtaskId})
+    return null;
     // popUpAlert({});
   };
+  if (error) return <>{JSON.stringify(error)}</>
 
   return (
     <>
@@ -30,7 +35,7 @@ function SubtaskList({ subtasks }) {
                             subtask?.status === "completed" ? true : false
                           }
                           onChange={() => {
-                            handleStatus();
+                            handleStatus(subtasks);
                           }}
                           label={subtask?.title || ""}
                         />
