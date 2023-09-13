@@ -5,8 +5,8 @@ import Loading from "./Loading";
 import { URLS } from "../constants";
 
 function AddInputGroup({ button, buttonVariant, label, placeholder }) {
-  const {data,error , loading,create} = useApi()
   const [title, setTitle] = useState({});
+  const {data,error , loading,create} = useApi()
  
   const handleSubmit = async () => {
     await create({url:URLS.TODOS, payload:title })

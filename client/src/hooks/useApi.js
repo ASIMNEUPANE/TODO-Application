@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import { URLS } from "../constants";
 
-export default function useApi ()  {
+export default function useApi() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [Loading, setLoading] = useState(false);
@@ -15,7 +16,7 @@ export default function useApi ()  {
       setLoading(false);
     } finally {
       setLoading(false);
-      list();
+      list({url:URLS.TODOS});
     }
   };
 
@@ -24,7 +25,7 @@ export default function useApi ()  {
       setLoading(true);
       const { data } = await axios(url);
       setData(data.data);
-      return data;
+    
     } catch (e) {
       setError(e);
       setLoading(false);
@@ -36,4 +37,4 @@ export default function useApi ()  {
   const deleteById = () => {};
 
   return { data, error, Loading, create, list, updateStatus, deleteById };
-};
+}

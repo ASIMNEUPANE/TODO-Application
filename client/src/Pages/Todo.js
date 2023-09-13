@@ -10,6 +10,7 @@ function Todo() {
   const { data: tasks, error, loading, list } = useApi();
   useEffect(() => {
     list({ url: URLS.TODOS });
+    
   }, []);
   if (error) return <>{JSON.stringify(error)}</>;
 
