@@ -4,11 +4,12 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useApiContext } from "../contexts";
 
 import Loading from "./Loading";
+import TaskStatus from "./TasksStatus";
 
 function SubtaskList({ subtasks }) {
   const { error, loading, deleteById } = useApiContext();
-  const handleStatus = () => {
-    console.log("subtask status is being changed");
+  const handleStatus = async (subtasks) => {
+    if(subtasks.Check) return TaskStatus(true)
   };
 
   const handleDelete = async (subtaskId) => {

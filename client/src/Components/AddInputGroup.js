@@ -19,6 +19,8 @@ function AddInputGroup({
   const handleSubmit = async () => {
     const payload = title;
     if (taskId) payload.todo = taskId;
+    console.log({ payload });
+
     await create({ url, payload: title });
     setTitle({});
   };

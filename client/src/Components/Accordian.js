@@ -4,8 +4,27 @@ import { URLS } from "../constants";
 import SubtaskList from "./SubTaskList";
 import AddInputGroup from "./AddInputGroup";
 import TaskStatus from "./TasksStatus";
+import { FaTrashAlt } from "react-icons/fa";
+import { useApiContext } from "../contexts";
+import Loading from "./Loading";
 
 function Accordian({ tasks }) {
+  const { error, loading, deleteById } = useApiContext();
+
+  const handleDelete = async (taskId) => {
+    console.log("delete");
+
+    await deleteById({ url: URLS.TODOS, id: taskId });
+    // popUpAlert({});
+  };
+  if (error) return <>{JSON.stringify(error)}</>;
+  if (loading)
+    return (
+      <>
+        <Loading />
+      </>
+    );
+
   const handleTaskChange = () => {
     console.log("i am task handler");
   };
@@ -34,6 +53,15 @@ function Accordian({ tasks }) {
                     </span>
                   </Form.Group>
                 </Col>
+                <Col xs="1">
+                  <FaTrashAlt
+                    color="red"
+                    onClick={() => {
+                      handleDelete(task?._id);
+                    }}
+                  />
+                </Col>
+
                 <Col xs={3}>
                   <div>
                     {task && task.subtasks.length > 0 && (
@@ -60,8 +88,8 @@ function Accordian({ tasks }) {
                   <MsgAlert msg="No Subtasks found. Add new subtask" />
                 )}
                 <AddInputGroup
-                url= {URLS.SUBTASKS}
-                taskId= {tasks?._id}
+                  url={URLS.SUBTASKS}
+                  taskId={tasks?._id}
                   label="Add new Subtask"
                   placeholder="Eg. Gather Clothes"
                   button="Add new Subtask"
