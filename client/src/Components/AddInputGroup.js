@@ -3,7 +3,7 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 
 import Loading from "./Loading";
 
-import { useApiContext } from "../Contexts";
+import { useApiContext } from "../contexts";
 
 function AddInputGroup({
   button,
@@ -18,15 +18,11 @@ function AddInputGroup({
 
   const handleSubmit = async () => {
     const payload = title;
-
     if (taskId) payload.todo = taskId;
-
     await create({ url, payload: title });
     setTitle({});
   };
-
   if (error) return <>{JSON.stringify(error)}</>;
-
   if (loading)
     return (
       <>

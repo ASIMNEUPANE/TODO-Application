@@ -3,13 +3,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import App from "./App";
-import APIContextProvider from "./Contexts";
+import APIContextProvider from "./contexts";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <APIContextProvider>
+ <APIContextProvider>
       <App />
-    </APIContextProvider>
+      </APIContextProvider>
+
   </React.StrictMode>
 );

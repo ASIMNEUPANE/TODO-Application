@@ -1,11 +1,13 @@
 import { useState } from "react";
+import Loading from "../Components/Loading";
 import axios from "axios";
 import { URLS } from "../constants";
+import Title from "../Components/Title";
 
 export default function useApi() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [Loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const create = async ({ url, payload }) => {
     try {
@@ -13,10 +15,9 @@ export default function useApi() {
       await axios.post(url, payload);
     } catch (e) {
       setError(e);
-      setLoading(false);
     } finally {
       setLoading(false);
-      list({ url: URLS.TODOS });
+      list({url: URLS.TODOS});
     }
   };
 
@@ -26,25 +27,36 @@ export default function useApi() {
       const { data } = await axios(url);
       setData(data.data);
     } catch (e) {
-      setError(e);
       setLoading(false);
+      setError(e);
     } finally {
       setLoading(false);
     }
   };
-  const updateStatus = () => {};
 
-  
-  const deleteById = async (url, id) => {
+  const updateStatus = async ({ url, id, payload }) => {
     try {
-      const url = await axios.delete(url + "/" + id);
+      setLoading(true);
+      await axios.put(url, id, payload);
     } catch (e) {
       setError(e);
     } finally {
       setLoading(false);
-      list({ url: URLS.TODOS });
     }
   };
 
-  return { data, error, Loading, create, list, updateStatus, deleteById };
+  const deleteById = async ({ url, id }) => {
+    try {
+      setLoading(true);
+      const link = url + "/" + id;
+      await axios.delete(link);
+    } catch (e) {
+      setError(e);
+    } finally {
+      setLoading(false);
+      list({url:URLS.TODOS})
+    }
+  };
+
+  return { data, error, loading, create, list, updateStatus, deleteById };
 }

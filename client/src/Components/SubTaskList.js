@@ -1,20 +1,28 @@
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { URLS } from "../constants";
-import { useApiContext } from "../Contexts";
 import { FaTrashAlt } from "react-icons/fa";
+import { useApiContext } from "../contexts";
+
+import Loading from "./Loading";
 
 function SubtaskList({ subtasks }) {
-  const {error,deleleById}= useApiContext()
+  const { error, loading, deleteById } = useApiContext();
   const handleStatus = () => {
     console.log("subtask status is being changed");
   };
 
   const handleDelete = async (subtaskId) => {
-    if (subtaskId) await deleleById({url:URLS.SUBTASKS, id:subtaskId})
-    return null;
+    console.log("delete");
+    await deleteById({ url: URLS.SUBTASKS, id: subtaskId });
     // popUpAlert({});
   };
-  if (error) return <>{JSON.stringify(error)}</>
+  if (error) return <>{JSON.stringify(error)}</>;
+  if (loading)
+    return (
+      <>
+        <Loading />
+      </>
+    );
 
   return (
     <>
@@ -45,7 +53,7 @@ function SubtaskList({ subtasks }) {
                       <FaTrashAlt
                         color="red"
                         onClick={() => {
-                          handleDelete();
+                          handleDelete(subtask?._id);
                         }}
                       />
                     </Col>
