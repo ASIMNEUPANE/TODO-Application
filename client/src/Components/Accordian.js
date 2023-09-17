@@ -12,8 +12,6 @@ function Accordian({ tasks }) {
   const { error, loading, deleteById } = useApiContext();
 
   const handleDelete = async (taskId) => {
-    console.log("delete");
-
     await deleteById({ url: URLS.TODOS, id: taskId });
     // popUpAlert({});
   };
@@ -47,19 +45,11 @@ function Accordian({ tasks }) {
                     />
                     &nbsp;
                     <span>
-                      {task?.title && task?.title.length > 32
+                      {task?.title && task?.title.length > 1
                         ? task?.title.substring(0, 32).concat("...")
                         : task?.title}
                     </span>
                   </Form.Group>
-                </Col>
-                <Col xs="1">
-                  <FaTrashAlt
-                    color="red"
-                    onClick={() => {
-                      handleDelete(task?._id);
-                    }}
-                  />
                 </Col>
 
                 <Col xs={3}>
@@ -80,6 +70,14 @@ function Accordian({ tasks }) {
                     )}
                   </div>
                 </Col>
+                <Col xs="1">
+                  <FaTrashAlt
+                    color="red"
+                    onClick={() => {
+                      handleDelete(task?._id);
+                    }}
+                  />
+                </Col>
               </Accordion.Header>
               <Accordion.Body>
                 {task?.subtasks && task?.subtasks.length > 0 ? (
@@ -89,7 +87,7 @@ function Accordian({ tasks }) {
                 )}
                 <AddInputGroup
                   url={URLS.SUBTASKS}
-                  taskId={tasks?._id}
+                  taskId={task?._id}
                   label="Add new Subtask"
                   placeholder="Eg. Gather Clothes"
                   button="Add new Subtask"

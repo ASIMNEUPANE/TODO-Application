@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
-
 import Loading from "./Loading";
 
 import { useApiContext } from "../contexts";
@@ -14,12 +13,14 @@ function AddInputGroup({
   url,
 }) {
   const [title, setTitle] = useState({});
+
   const { error, loading, create } = useApiContext();
 
   const handleSubmit = async () => {
     const payload = title;
+    console.log(taskId);
     if (taskId) payload.todo = taskId;
-    console.log({ payload });
+    console.log(taskId);
 
     await create({ url, payload: title });
     setTitle({});

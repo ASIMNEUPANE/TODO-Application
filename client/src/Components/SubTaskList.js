@@ -4,12 +4,12 @@ import { FaTrashAlt } from "react-icons/fa";
 import { useApiContext } from "../contexts";
 
 import Loading from "./Loading";
-import TaskStatus from "./TasksStatus";
 
 function SubtaskList({ subtasks }) {
   const { error, loading, deleteById } = useApiContext();
-  const handleStatus = async (subtasks) => {
-    if(subtasks.Check) return TaskStatus(true)
+
+  const handleStatus = async () => {
+   console.log("handlestatus")
   };
 
   const handleDelete = async (subtaskId) => {
@@ -46,7 +46,7 @@ function SubtaskList({ subtasks }) {
                           onChange={() => {
                             handleStatus(subtasks);
                           }}
-                          label={subtask?.title || ""}
+                          label={subtask?.title }
                         />
                       </Form.Group>
                     </Col>

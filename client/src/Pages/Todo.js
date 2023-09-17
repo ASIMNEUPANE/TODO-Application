@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 import { useApiContext } from "../contexts";
 function Todo() {
- const {data:tasks,error,loading,list}= useApiContext()
+  const { data: tasks, error, loading, list } = useApiContext();
 
   useEffect(() => {
     list({ url: URLS.TODOS });
@@ -26,7 +26,7 @@ function Todo() {
     <>
       <Title title="TODO App" />
       <AddInputGroup
-      url={URLS.TODOS}
+        url={URLS.TODOS}
         label="Add new todo?"
         placeholder="EG. Do Laundry."
         button="Add the task"
