@@ -1,10 +1,17 @@
-import { Spinner } from "react-bootstrap";
+// import { Spinner } from "react-bootstrap";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function Loading() {
   return (
-    <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
+    <SkeletonTheme color="#202020" highlightColor="#444">
+      <p>
+        <Skeleton count={3} />
+        <Skeleton height={100} />
+        <Skeleton style={{ borderRadius: 10 }} />
+        <Skeleton className="foobar" />
+      </p>
+    </SkeletonTheme>
   );
 }
 
