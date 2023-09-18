@@ -13,8 +13,8 @@ function App() {
             <Col md={{ span: 6, offset: 3 }}>
               <Todo/>
               {/* <Form/> */}
-              <PassGen/>
-              <Practice />
+              {/* <PassGen/> */}
+              {/* <Practice /> */}
             </Col>
           </Row>
         </center>
