@@ -1,0 +1,15 @@
+FROM node:20-alpine3.20 AS base
+WORKDIR /usr/src/app
+RUN apk add --no-cache libc6-compat 
+COPY package*.json ./
+RUN npm install
+
+FROM base AS development
+COPY . .
+CMD ["npm", "run", "dev"]
+
+FROM base as production
+ENV NODE_ENV=production
+COPY . .
+RUN npm  --production
+CMD ["npm", "run", "start"]
